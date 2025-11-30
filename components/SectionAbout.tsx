@@ -56,7 +56,7 @@ const SectionAbout: React.FC = () => {
                </div>
                <div className="w-px h-14 bg-[#3D2F28]"></div>
                <div>
-                  <span className="block text-5xl font-serif text-[#F0F0F2]">30+</span>
+                  <span className="block text-5xl font-serif text-[#F0F0F2]">120+</span>
                   <span className="text-[10px] uppercase tracking-wider text-[#855E42] font-bold">Proyectos</span>
                </div>
             </div>
