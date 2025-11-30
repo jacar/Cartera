@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <!-- Primary Meta Tags -->
+  <title>Armando Ovalle J. | Diseñador & Desarrollador Full Stack</title>
+  <meta name="title" content="Armando Ovalle J. | Diseñador & Desarrollador Full Stack" />
+  <meta name="description"
+    content="Portafolio profesional de Armando Ovalle J. Especialista en Desarrollo Web, Diseño UI/UX, E-commerce y Estrategia Digital. Transformo ideas en experiencias digitales de alto impacto." />
+  <meta name="keywords"
+    content="desarrollo web, diseñador ui ux, full stack developer, armando ovalle, diseño web colombia, e-commerce, wordpress experto, react developer, frontend, backend" />
+  <meta name="author" content="Armando Ovalle J." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#141110" />
+  <link rel="canonical" href="https://jacomeovalle.com/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jacomeovalle.com/" />
+  <meta property="og:title" content="Armando Ovalle J. | Diseñador & Desarrollador Full Stack" />
+  <meta property="og:description"
+    content="Transformo ideas en experiencias digitales únicas y funcionales. Desarrollo Web, UI/UX y Soluciones a Medida." />
+  <meta property="og:image" content="https://jacomeovalle.com/og-image.jpg" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://jacomeovalle.com/" />
+  <meta property="twitter:title" content="Armando Ovalle J. | Diseñador & Desarrollador Full Stack" />
+  <meta property="twitter:description"
+    content="Transformo ideas en experiencias digitales únicas y funcionales. Desarrollo Web, UI/UX y Soluciones a Medida." />
+  <meta property="twitter:image" content="https://jacomeovalle.com/og-image.jpg" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #141110;
+      color: #F0F0F2;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      /* Prevent text selection during drag */
+      overflow-x: hidden;
+      /* Prevent horizontal scroll on body */
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .serif {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* The main horizontal wrapper */
+    .horizontal-scroll-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      height: 100vh;
+      width: 100vw;
+      /* FIXED: Must be viewport width to allow scrollLeft to work */
+      overflow-x: hidden;
+      /* JS handles the scroll */
+      overflow-y: hidden;
+    }
+
+    .section {
+      height: 100vh;
+      flex-shrink: 0;
+      /* Prevent shrinking */
+      position: relative;
+      overflow: hidden;
+      /* Ensure content doesn't spill vertically */
+    }
+
+    /* Utility to hide scrollbars but keep functionality if needed */
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Mobile styles */
+    @media (max-width: 767px) {
+      body {
+        overflow-y: auto;
+        /* Allow vertical scroll on mobile */
+        user-select: auto;
+        /* Allow text selection on mobile */
+      }
+
+      .horizontal-scroll-container {
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: auto;
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: visible;
+        /* Allow vertical scroll */
+      }
+
+      .section {
+        height: auto;
+        width: 100%;
+        flex-shrink: 1;
+        /* Allow shrinking */
+        overflow: visible;
+        /* Allow content to spill vertically */
+      }
+    }
+
+    .cursor-grab {
+      cursor: grab;
+    }
+
+    .cursor-grabbing {
+      cursor: grabbing !important;
+    }
+  </style>
+  <!-- 
+      FIXED IMPORT MAP:
+      Se eliminaron las líneas conflictivas de 'react/' y 'react-dom/' que apuntaban a la versión 19.
+      Ahora todo el ecosistema usa estrictamente React 18.2.0 vía esm.sh.
+    -->
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client?deps=react@18.2.0",
+    "react-dom": "https://esm.sh/react-dom@18.2.0?deps=react@18.2.0",
+    "lucide-react": "https://esm.sh/lucide-react@0.263.1?deps=react@18.2.0",
+    "framer-motion": "https://esm.sh/framer-motion@10.12.16?deps=react@18.2.0",
+    "@google/genai": "https://esm.sh/@google/genai@0.1.1"
+
+  }
+}
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>

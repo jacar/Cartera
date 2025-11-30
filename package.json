@@ -1,0 +1,28 @@
+{
+  "name": "armando-ovalle-j.---diseñador-full-stack",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@google/genai": "^0.2.0",
+    "@react-pdf/renderer": "^4.3.1",
+    "@supabase/supabase-js": "^2.86.0",
+    "framer-motion": "10.12.16",
+    "jspdf": "^3.0.4",
+    "lucide-react": "0.263.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^7.9.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12"
+  }
+}
