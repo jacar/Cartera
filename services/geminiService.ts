@@ -13,7 +13,7 @@ const getAiClient = () => {
   } catch (e) {
     // Ignore reference errors if process is not defined
   }
-  
+
   // We allow instantiation even if empty to let the specific call fail gracefully with a clearer error
   return new GoogleGenAI({ apiKey });
 };
@@ -25,7 +25,8 @@ export const sendChatMessage = async (history: { role: string; parts: { text: st
     const chat = ai.chats.create({
       model: 'gemini-2.5-flash',
       config: {
-        thinkingConfig: { thinkingBudget: 32768 }, // Enable extended thinking for complex consultations
+        // thinkingConfig removed as it is not supported in this SDK version/model type
+
         systemInstruction: `Eres la inteligencia artificial comercial de Armando Ovalle J., un Director de Arte y Desarrollador Full Stack de alto nivel.
         
         TU OBJETIVO:
@@ -69,11 +70,11 @@ export const sendChatMessage = async (history: { role: string; parts: { text: st
 // 2. Image Generation using gemini-3-pro-image-preview with Fallback to gemini-2.5-flash-image
 export const generateCreativeImage = async (prompt: string, aspectRatio: AspectRatio): Promise<string> => {
   const ai = getAiClient();
-    
+
   // The Gemini API strictly supports specific aspect ratios: "1:1", "3:4", "4:3", "9:16", and "16:9".
   // We map user-requested extended ratios (like cinematic 21:9 or classic photo 2:3) 
   // to the nearest supported API ratio to ensure generation success without errors.
-  
+
   let mapRatio = aspectRatio;
 
   switch (aspectRatio) {
@@ -103,7 +104,8 @@ export const generateCreativeImage = async (prompt: string, aspectRatio: AspectR
           aspectRatio: mapRatio as any,
           // imageSize is NOT supported in Flash models, so we omit it
         }
-      }
+      } as any
+
     });
 
     for (const part of response.candidates?.[0]?.content?.parts || []) {
