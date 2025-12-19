@@ -15,6 +15,35 @@ interface Project {
 const featuredProjects: Project[] = [
   {
     id: 1,
+    name: "Kinnect",
+    cat: "Plataforma Web",
+    img: "https://www.webcincodev.com/blog/wp-content/uploads/2025/12/kinnect.gif",
+    projectUrl: "https://kinnect-pro.vercel.app/",
+    gallery: [
+      "https://www.webcincodev.com/blog/wp-content/uploads/2025/12/kinnect.gif",
+      "https://www.webcincodev.com/blog/wp-content/uploads/2025/12/6.png",
+      "https://www.webcincodev.com/blog/wp-content/uploads/2025/12/2.png",
+      "https://www.webcincodev.com/blog/wp-content/uploads/2025/12/4.png"
+    ],
+    desc: "Kinnect Pro es una plataforma web para crear y fortalecer conexiones familiares, organizar relaciones por parentesco y construir un espacio íntimo donde compartir historias, recuerdos y momentos importantes."
+  },
+  {
+    id: 2,
+    name: "Clipli",
+    cat: "Herramientas Web",
+    img: "https://www.webcincodev.com/blog/wp-content/uploads/2025/12/Macbook-Air-and-iPad-Pro-Showcase-Screens-psd-Mockup-scaled.png",
+    projectUrl: "https://www.clipli.top/",
+    gallery: [
+      "https://www.webcincodev.com/blog/wp-content/uploads/2025/12/Macbook-Air-and-iPad-Pro-Showcase-Screens-psd-Mockup-scaled.png",
+      "https://www.webcincodev.com/blog/wp-content/uploads/2025/12/biolink-1.png",
+      "https://www.webcincodev.com/blog/wp-content/uploads/2025/12/biolink-.png",
+      "https://www.webcincodev.com/blog/wp-content/uploads/2025/12/biolink-3.png",
+      "https://www.webcincodev.com/blog/wp-content/uploads/2025/12/biolink-2.png"
+    ],
+    desc: "Plataforma de gestión de enlaces y biolinks."
+  },
+  {
+    id: 3,
     name: "Diseño de Bobinas",
     cat: "React / Ingeniería",
     img: "https://mir-s3-cdn-cf.behance.net/project_modules/fs/b34890231942605.689292498c877.png",
@@ -22,7 +51,7 @@ const featuredProjects: Project[] = [
     gallery: ["https://mir-s3-cdn-cf.behance.net/project_modules/fs/b34890231942605.689292498c877.png"]
   },
   {
-    id: 2,
+    id: 4,
     name: "Gratis Radio",
     cat: "Streaming / Multimedia",
     img: "https://mir-s3-cdn-cf.behance.net/project_modules/fs/8e8578237892183.6909ff9910dd5.png",
@@ -30,7 +59,7 @@ const featuredProjects: Project[] = [
     gallery: ["https://mir-s3-cdn-cf.behance.net/project_modules/fs/8e8578237892183.6909ff9910dd5.png"]
   },
   {
-    id: 3,
+    id: 5,
     name: "Explorador Marvel",
     cat: "Next.js / API",
     img: "https://www.webcincodev.com/blog/wp-content/uploads/2025/03/peli.png",
@@ -38,7 +67,7 @@ const featuredProjects: Project[] = [
     gallery: ["https://www.webcincodev.com/blog/wp-content/uploads/2025/03/peli.png"]
   },
   {
-    id: 4,
+    id: 6,
     name: "Portal Inlingua",
     cat: "Tecnología Educativa",
     img: "https://www.webcincodev.com/blog/wp-content/uploads/2025/03/inlingua.png",
@@ -46,7 +75,7 @@ const featuredProjects: Project[] = [
     gallery: ["https://www.webcincodev.com/blog/wp-content/uploads/2025/03/inlingua.png"]
   },
   {
-    id: 5,
+    id: 7,
     name: "Sopa de Letras",
     cat: "Videojuegos / React",
     img: "https://www.webcincodev.com/blog/wp-content/uploads/2025/03/letra8.png",
@@ -54,7 +83,7 @@ const featuredProjects: Project[] = [
     gallery: ["https://www.webcincodev.com/blog/wp-content/uploads/2025/03/letra8.png"]
   },
   {
-    id: 6,
+    id: 8,
     name: "Generador Códigos QR",
     cat: "Herramientas Web",
     img: "https://www.webcincodev.com/blog/wp-content/uploads/2025/03/Mockup2.png",
@@ -62,7 +91,7 @@ const featuredProjects: Project[] = [
     gallery: ["https://www.webcincodev.com/blog/wp-content/uploads/2025/03/Mockup2.png"]
   },
   {
-    id: 7,
+    id: 9,
     name: "Seguridad SafeWeb",
     cat: "Ciberseguridad",
     img: "https://www.webcincodev.com/blog/wp-content/uploads/2025/03/Mockup25.png",
@@ -70,7 +99,7 @@ const featuredProjects: Project[] = [
     gallery: ["https://www.webcincodev.com/blog/wp-content/uploads/2025/03/Mockup25.png"]
   },
   {
-    id: 8,
+    id: 10,
     name: "Traductor IA",
     cat: "Inteligencia Artificial",
     img: "https://www.webcincodev.com/blog/wp-content/uploads/2025/03/tra2.png",
@@ -81,21 +110,21 @@ const featuredProjects: Project[] = [
 
 const archiveProjects: Project[] = [
   {
-    id: 9,
+    id: 11,
     name: "Concepto Visual IA",
     cat: "UI Generativa",
     img: "https://www.webcincodev.com/blog/wp-content/uploads/2025/11/Gemini_Generated_Image_xyedd7xyedd7xyed-scaled.png",
     projectUrl: "#"
   },
   {
-    id: 10,
+    id: 12,
     name: "Concepto Dashboard",
     cat: "UI Generativa",
     img: "https://www.webcincodev.com/blog/wp-content/uploads/2025/11/Gemini_Generated_Image_b7qat8b7qat8b7qa-scaled.png",
     projectUrl: "#"
   },
   {
-    id: 11,
+    id: 13,
     name: "Rastrea Móvil",
     cat: "Next.js / Supabase",
     desc: "Sistema de Gestión de Flotas Integral",
@@ -103,7 +132,7 @@ const archiveProjects: Project[] = [
     projectUrl: "https://jf-gps.vercel.app/"
   },
   {
-    id: 12,
+    id: 14,
     name: "Corporación JF",
     cat: "Corporativo / Tecnología",
     desc: "Plataforma corporativa de servicios logísticos y tecnológicos",
@@ -370,7 +399,7 @@ const SectionThree: React.FC = () => {
               <span className="text-[#855E42] text-xs font-bold uppercase tracking-widest mb-2">{selectedProject.cat}</span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif mb-6">{selectedProject.name}</h2>
               <p className="text-[#6B7176] mb-8 leading-relaxed text-sm md:text-base">
-                Proyecto desarrollado con enfoque en usabilidad e impacto visual.
+                {selectedProject.desc || "Proyecto desarrollado con enfoque en usabilidad e impacto visual."}
               </p>
               {selectedProject.projectUrl && selectedProject.projectUrl !== '#' && (
                 <a
