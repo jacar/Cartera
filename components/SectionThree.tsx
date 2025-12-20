@@ -129,7 +129,7 @@ const archiveProjects: Project[] = [
     cat: "Next.js / Supabase",
     desc: "Sistema de Gestión de Flotas Integral",
     img: "https://www.webcincodev.com/blog/wp-content/uploads/2025/11/8.jpg",
-    projectUrl: "https://jf-gps.vercel.app/"
+    projectUrl: "https://jf-gps-n5b6.vercel.app/"
   },
   {
     id: 14,
