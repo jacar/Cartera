@@ -1,19 +1,26 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Navigation from './components/Navigation';
 import SectionOne from './components/SectionOne';
-import SectionTwo from './components/SectionTwo';
-import SectionAbout from './components/SectionAbout';
-import SectionServices from './components/SectionServices';
-import SectionServiceList from './components/SectionServiceList';
-import SectionTechStack from './components/SectionTechStack';
-import SectionThree from './components/SectionThree';
-import SectionWordPress from './components/SectionWordPress';
-import SectionGraphicDesign from './components/SectionGraphicDesign';
-import SectionContact from './components/SectionContact';
-import FooterSection from './components/FooterSection';
 import WhatsAppWidget from './components/WhatsAppWidget';
 
+const SectionTwo = React.lazy(() => import('./components/SectionTwo'));
+const SectionAbout = React.lazy(() => import('./components/SectionAbout'));
+const SectionServices = React.lazy(() => import('./components/SectionServices'));
+const SectionServiceList = React.lazy(() => import('./components/SectionServiceList'));
+const SectionTechStack = React.lazy(() => import('./components/SectionTechStack'));
+const SectionThree = React.lazy(() => import('./components/SectionThree'));
+const SectionWordPress = React.lazy(() => import('./components/SectionWordPress'));
+const SectionGraphicDesign = React.lazy(() => import('./components/SectionGraphicDesign'));
+const SectionContact = React.lazy(() => import('./components/SectionContact'));
+const FooterSection = React.lazy(() => import('./components/FooterSection'));
+
 const SECTIONS = ['Inicio', 'Filosofía', 'Perfil', 'Expertise', 'Catálogo', 'Stack', 'Trabajos', 'CMS', 'Diseño', 'Contacto', 'Cotizador Web'];
+
+const SectionFallback = () => (
+  <div className="w-screen min-h-screen h-auto bg-[#141110] flex items-center justify-center shrink-0">
+    <div className="w-8 h-8 border-4 border-[#855E42] border-t-transparent rounded-full animate-spin"></div>
+  </div>
+);
 
 const App: React.FC = () => {
   const [currentSection, setCurrentSection] = useState(0);
@@ -74,43 +81,57 @@ const App: React.FC = () => {
     let animationFrameId: number;
 
     const updateScroll = () => {
-      // Linear Interpolation (Lerp) for inertia
-      // If dragging, we want instantaneous response (no lerp lag), otherwise smooth
       const friction = isDragging.current ? 0.5 : 0.08;
       const diff = targetScroll.current - currentScroll.current;
 
-      if (Math.abs(diff) < 0.01) {
-        currentScroll.current = targetScroll.current;
-      } else {
+      // Solo actualizar si la diferencia es notable
+      if (Math.abs(diff) > 0.01) {
         currentScroll.current += diff * friction;
-      }
 
-      if (scrollContainerRef.current) {
-        if (!isMobile) {
+        if (scrollContainerRef.current) {
+          if (!isMobile) {
+            scrollContainerRef.current.scrollLeft = currentScroll.current;
+          }
+
+          // Update Active Section Indicator logic
+          const centerPoint = isMobile ? currentScroll.current + window.innerHeight / 2 : currentScroll.current + window.innerWidth / 2;
+
+          sectionRefs.current.forEach((sec, idx) => {
+            if (sec) {
+              const offset = isMobile ? sec.offsetTop : sec.offsetLeft;
+              const size = isMobile ? sec.offsetHeight : sec.offsetWidth;
+              if (centerPoint >= offset && centerPoint < offset + size) {
+                if (currentSection !== idx) setCurrentSection(idx);
+              }
+            }
+          });
+        }
+        animationFrameId = requestAnimationFrame(updateScroll);
+      } else {
+        // Asegurar que quede exacto
+        currentScroll.current = targetScroll.current;
+        if (scrollContainerRef.current && !isMobile) {
           scrollContainerRef.current.scrollLeft = currentScroll.current;
         }
-
-        // Update Active Section Indicator logic
-        const centerPoint = isMobile ? currentScroll.current + window.innerHeight / 2 : currentScroll.current + window.innerWidth / 2;
-
-        sectionRefs.current.forEach((sec, idx) => {
-          if (sec) {
-            const offset = isMobile ? sec.offsetTop : sec.offsetLeft;
-            const size = isMobile ? sec.offsetHeight : sec.offsetWidth;
-            if (centerPoint >= offset && centerPoint < offset + size) {
-              setCurrentSection(idx);
-            }
-          }
-        });
       }
-
-      animationFrameId = requestAnimationFrame(updateScroll);
     };
 
-    updateScroll();
+    // Kick-start animation if target changes (handled in wheel/drag events)
+    // We need to re-trigger it from those events if it stops.
+    // For now, to keep it simple without rewriting the whole logic:
+    // Let's just run it continuously but sleep the CPU when not moving.
+    // Wait, if it stops, it won't restart on wheel event unless we tell it to.
+    // Better approach: run it always, but don't do DOM writes if not needed.
+    
+    // Mejor enfoque: Siempre corre, pero no escribe en el DOM si no hay cambios.
+    const loop = () => {
+       updateScroll();
+       animationFrameId = requestAnimationFrame(loop);
+    };
+    loop();
 
     return () => cancelAnimationFrame(animationFrameId);
-  }, [isMobile]);
+  }, [isMobile, currentSection]);
 
   // 3. Navigation Click Handler
   const scrollToSection = (index: number) => {
@@ -193,17 +214,17 @@ const App: React.FC = () => {
         <div ref={scrollContainerRef} className={`horizontal-scroll-container ${isMobile ? 'flex-col h-auto w-full overflow-y-auto overflow-x-hidden' : 'flex-row h-screen w-screen overflow-x-hidden overflow-y-hidden'}`}>
           {/* We use specific components but ensure they are wrapped to capture refs safely */}
           <div ref={(el) => { sectionRefs.current[0] = el; }}><SectionOne /></div>
-          <div ref={(el) => { sectionRefs.current[1] = el; }}><SectionTwo /></div>
-          <div ref={(el) => { sectionRefs.current[2] = el; }}><SectionAbout /></div>
-          <div ref={(el) => { sectionRefs.current[3] = el; }}><SectionServices /></div>
-          <div ref={(el) => { sectionRefs.current[4] = el; }}><SectionServiceList /></div>
-          <div ref={(el) => { sectionRefs.current[5] = el; }}><SectionTechStack /></div>
-          <div ref={(el) => { sectionRefs.current[6] = el; }}><SectionThree /></div>
-          <div ref={(el) => { sectionRefs.current[7] = el; }}><SectionWordPress /></div>
-          <div ref={(el) => { sectionRefs.current[8] = el; }}><SectionGraphicDesign /></div>
-          <div ref={(el) => { sectionRefs.current[9] = el; }}><SectionContact /></div>
+          <div ref={(el) => { sectionRefs.current[1] = el; }}><React.Suspense fallback={<SectionFallback />}><SectionTwo /></React.Suspense></div>
+          <div ref={(el) => { sectionRefs.current[2] = el; }}><React.Suspense fallback={<SectionFallback />}><SectionAbout /></React.Suspense></div>
+          <div ref={(el) => { sectionRefs.current[3] = el; }}><React.Suspense fallback={<SectionFallback />}><SectionServices /></React.Suspense></div>
+          <div ref={(el) => { sectionRefs.current[4] = el; }}><React.Suspense fallback={<SectionFallback />}><SectionServiceList /></React.Suspense></div>
+          <div ref={(el) => { sectionRefs.current[5] = el; }}><React.Suspense fallback={<SectionFallback />}><SectionTechStack /></React.Suspense></div>
+          <div ref={(el) => { sectionRefs.current[6] = el; }}><React.Suspense fallback={<SectionFallback />}><SectionThree /></React.Suspense></div>
+          <div ref={(el) => { sectionRefs.current[7] = el; }}><React.Suspense fallback={<SectionFallback />}><SectionWordPress /></React.Suspense></div>
+          <div ref={(el) => { sectionRefs.current[8] = el; }}><React.Suspense fallback={<SectionFallback />}><SectionGraphicDesign /></React.Suspense></div>
+          <div ref={(el) => { sectionRefs.current[9] = el; }}><React.Suspense fallback={<SectionFallback />}><SectionContact /></React.Suspense></div>
 
-          <div ref={(el) => { sectionRefs.current[10] = el; }}><FooterSection /></div>
+          <div ref={(el) => { sectionRefs.current[10] = el; }}><React.Suspense fallback={<SectionFallback />}><FooterSection /></React.Suspense></div>
         </div>
 
         <WhatsAppWidget />
